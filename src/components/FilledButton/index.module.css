@@ -1,0 +1,9 @@
+.btn {
+    /*background: red;*/
+    padding: 10px 20px;
+    color: #fff;
+    font-size: medium;
+    font-family: Arial, serif;
+    border: none;
+    width: 100px;
+}
