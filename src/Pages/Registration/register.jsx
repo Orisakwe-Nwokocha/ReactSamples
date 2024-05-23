@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import SignUpForm from './SignUpForm/index';
-import OtpForm from './OtpPage/index';
+import SignUpForm from '../../components/SignUpForm';
+import OtpForm from '../../components/OtpPage';
 import axios from 'axios';
 
 const Register = () => {

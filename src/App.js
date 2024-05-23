@@ -1,8 +1,7 @@
 import './App.css';
 import Hero from "./Pages/Home/Hero";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import SignUpForm from "./components/Registration/SignUpForm";
-import OtpForm from "./components/Registration/OtpPage";
+import Register from "./Pages/Registration/register";
 
 function App() {
   return (
@@ -20,8 +19,9 @@ function App() {
               <Routes>
                   <Route>
                       <Route element={<Hero/>} path={"/home"}/>
-                      <Route element={<SignUpForm/>} path={"/signup"}/>
-                      <Route element={<OtpForm/>} path={"/verify"}/>
+                      {/*<Route element={<SignUpForm/>} path={"/signup"}/>*/}
+                      {/*<Route element={<OtpForm/>} path={"/verify"}/>*/}
+                      <Route element={<Register/>} path={"/register"}/>
                   </Route>
               </Routes>
           </BrowserRouter>
