@@ -18,7 +18,6 @@ const OtpForm = ({ initialData, onSubmit }) => {
     };
 
     return (
-        // <div className="signup-container">
             <div className="signup-form">
                 <form className="signup-form" onSubmit={handleSubmit}>
                     <h2>Enter your otp number</h2>
@@ -36,7 +35,6 @@ const OtpForm = ({ initialData, onSubmit }) => {
                     <button type="submit" className="signup-button">Verify OTP</button>
                 </form>
             </div>
-        // </div>
     );
 };
 

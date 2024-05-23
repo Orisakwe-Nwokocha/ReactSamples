@@ -1,6 +1,8 @@
 import "./signup.css";
 
 import {useState} from 'react';
+import OtpForm from "../OtpPage";
+import {Link} from "react-router-dom";
 
 const SignUpForm = ({ onSubmit }) => {
     const [formData, setFormData] = useState({
@@ -71,8 +73,9 @@ const SignUpForm = ({ onSubmit }) => {
                     <div>
                         <p>Already have an account? </p>
                     </div>
+
                     <div>
-                        <a href="/login">Login</a>
+                        <Link to="/login">Login</Link>
                     </div>
                 </div>
                 <button type="submit" className="signup-button">Sign Up</button>
