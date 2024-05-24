@@ -2,8 +2,9 @@ import './App.css';
 import Hero from "./Pages/Home/Hero";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Register from "./Pages/Registration/register";
-import SignUpForm from "./components/SignUpForm";
-import LoginForm from "./components/LoginForm/login";
+import SignUpForm from "./Pages/Registration/SignUpForm";
+import LoginForm from "./Pages/LoginForm/login";
+import OtpForm from "./Pages/Registration/OtpForm";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
                       <Route element={<Hero/>} path={"/home"}/>
                       <Route element={<SignUpForm/>} path={"/signup"}/>
                       <Route element={<LoginForm/>} path={"/login"}/>
-                      {/*<Route element={<OtpForm/>} path={"/verify"}/>*/}
+                      <Route element={<OtpForm/>} path={"/authenticate"}/>
                       <Route element={<Register/>} path={"/register"}/>
                   </Route>
               </Routes>

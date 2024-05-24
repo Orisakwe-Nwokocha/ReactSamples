@@ -1,24 +1,30 @@
-/*.signup-container {*/
-/*    !*display: flex;*!*/
-/*    !*height: 100vh;*!*/
-/*}*/
+* {
+    margin: 0;
+    padding: 0;
+}
 
-/*.signup-image {*/
-/*    flex: 1;*/
-/*    !*background: url("webSignup.png") no-repeat center center;*!*/
-/*    background-size: cover;*/
-/*    !*width: 10px;*!*/
+.otp-container {
+    display: flex;
+    /*height: 100vh;*/
+    justify-content: space-between;
 
-/*}*/
+}
+
+.signup-image {
+    width: 40%;
+    padding: 0 0;
+    margin: 0 0;
+}
 
 .signup-form {
     flex: 1;
-    display: grid;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 40px;
     background-color: white;
     text-align: center;
+    width: 50%;
 }
 
 .signup-form h2 {
@@ -54,17 +60,6 @@
     border-radius: 5px;
 }
 
-.form-footer {
-    margin-bottom: 20px;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-.form-footer a {
-    color: #6A1B9A;
-    text-decoration: none;
-}
 
 .signup-button {
     padding: 0;
