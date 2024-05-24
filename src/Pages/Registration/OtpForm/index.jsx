@@ -10,7 +10,6 @@ const OtpForm = () => {
     const { formData } = location.state || {};
     const navigate = useNavigate();
 
-
     const handleChange = (e) => {
         setOtp(e.target.value);
     };
