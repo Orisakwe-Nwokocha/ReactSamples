@@ -2,7 +2,7 @@ import "./signup.css";
 import signUpLogo from "./webSignup.png";
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import {Bounce, toast, ToastContainer} from "react-toastify";
+import { toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {Field, Form, Formik} from "formik";
 
@@ -39,7 +39,7 @@ const SignUpForm = () => {
 
             if (response.ok) {
                 let message = "Kindly Check your mail to see your OTP number for Account verification";
-                alert(message)
+                // alert(message)
                 toast.success(message, {
                     position: "top-center",
                     autoClose: 5000,
@@ -53,13 +53,13 @@ const SignUpForm = () => {
 
                 setTimeout(() => {
                     navigate("/authenticate", { state: { formData } });
-                }, 6000);
+                }, 3000);
             } else {
                 console.error('Error:', responseData);
                 console.log("else statement", responseData.data)
 
                 toast.error(responseData.data, {
-                    position: "top-right",
+                    position: "top-center",
                     autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -77,15 +77,14 @@ const SignUpForm = () => {
             let message = error.data;
             // alert(`Error registering: ${message}`);
             toast.error(message, {
-                position: "top-right",
+                position: "top-center",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                theme: "dark",
-                transition: Bounce,
+                theme: "dark"
             });
         }
     };
@@ -96,7 +95,7 @@ const SignUpForm = () => {
                 // initialValues={{fullName: '', email: ''}}
                 // validationSchema={validationSchema}
                 onSubmit={handleSubmit}
-                initialValues={{username: "", password: "", role: "",}}
+                initialValues={{username: "", password: "", role: ""}}
             >
         <div className="signup-container">
             <img src={signUpLogo} className="signup-image" alt="signUpLogo" />

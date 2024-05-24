@@ -4,7 +4,7 @@ import {useState} from 'react';
 import {Link} from "react-router-dom";
 import loginLogo from "./webLogin.png";
 import axios from "axios";
-import {ToastContainer, toast, Bounce} from 'react-toastify';
+import {ToastContainer, toast} from 'react-toastify';
 import {Field, Form, Formik} from "formik";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -26,11 +26,11 @@ const LoginForm = () => {
         axios.patch("http://localhost:8080/user/login", formData)
             .then(response => {
                 console.log('Logged in', response);
-                alert("Your Account has been successfully logged in");
-                let userId = response.data.data.id;
-                let username = response.data.data.username;
+                // alert("Your Account has been successfully logged in");
+                // let userId = response.data.data.id;
+                // let username = response.data.data.username;
 
-                toast.success(`user id:  '${userId}'  ||  username:  '${username}'`, {
+                toast.success('Your Account has been successfully logged in', {
                     position: "top-center",
                     autoClose: 5000,
                     hideProgressBar: false,
@@ -47,10 +47,10 @@ const LoginForm = () => {
             .catch(error => {
                 console.error('Error logging in', error);
                 let message = error.response.data.data;
-                alert(`Error logging in: ${message}`);
+                // alert(`Error logging in: ${message}`);
 
                 toast.error(message, {
-                    position: "top-right",
+                    position: "top-center",
                     autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,
