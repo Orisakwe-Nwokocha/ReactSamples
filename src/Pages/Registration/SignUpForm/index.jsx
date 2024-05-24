@@ -2,6 +2,10 @@ import "./signup.css";
 import signUpLogo from "./webSignup.png";
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import {Bounce, toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import {Field, Form, Formik} from "formik";
+
 
 const SignUpForm = () => {
     const [formData, setFormData] = useState({
@@ -21,8 +25,7 @@ const SignUpForm = () => {
     };
 
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
         try {
             const response = await fetch("http://localhost:8080/user/register", {
                 method: 'POST',
@@ -33,30 +36,76 @@ const SignUpForm = () => {
             });
             const responseData = await response.json();
             console.log(responseData);
+
             if (response.ok) {
-                alert("Kindly Check your mail to see your OTP number for Account verification");
-                alert(responseData.data.message);
-                console.log(responseData);
-                navigate("/authenticate", {state: {formData}});
+                let message = "Kindly Check your mail to see your OTP number for Account verification";
+                alert(message)
+                toast.success(message, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark"
+                });
+
+                setTimeout(() => {
+                    navigate("/authenticate", { state: { formData } });
+                }, 6000);
             } else {
                 console.error('Error:', responseData);
+                console.log("else statement", responseData.data)
+
+                toast.error(responseData.data, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark"
+                    // transition: Bounce,
+                });
             }
         } catch (error) {
             console.error('Error:', error);
-            let message = error.response.data.data;
-            alert(`Error registering: ${message}`);
+            console.log("error statement", error)
+
+            let message = error.data;
+            // alert(`Error registering: ${message}`);
+            toast.error(message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            });
         }
     };
 
     return (
+        <div>
+            <Formik
+                // initialValues={{fullName: '', email: ''}}
+                // validationSchema={validationSchema}
+                onSubmit={handleSubmit}
+                initialValues={{username: "", password: "", role: "",}}
+            >
         <div className="signup-container">
             <img src={signUpLogo} className="signup-image" alt="signUpLogo" />
             <div className="signup-form">
-                <form className="signup-form" onSubmit={handleSubmit}>
+                <Form className="signup-form">
                     <h2>Welcome!</h2>
                     <p>Sign up by entering the information below</p>
                     <div className="input-container">
-                        <input
+                        <Field
                             id="username"
                             name="username"
                             type="text"
@@ -67,7 +116,7 @@ const SignUpForm = () => {
                         />
                     </div>
                     <div className="input-container">
-                        <input
+                        <Field
                             id="password"
                             name="password"
                             type="password"
@@ -100,8 +149,11 @@ const SignUpForm = () => {
                         </div>
                     </div>
                     <button type="submit" className="signup-button">Sign Up</button>
-                </form>
+                </Form>
             </div>
+        </div>
+            </Formik>
+            <ToastContainer/>
         </div>
     );
 };
