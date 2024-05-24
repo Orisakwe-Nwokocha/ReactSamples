@@ -4,6 +4,7 @@ import {useState} from 'react';
 import {Link} from "react-router-dom";
 import loginLogo from "./webLogin.png";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
 
 const LoginForm = () => {
     const [formData, setFormData] = useState({
@@ -27,11 +28,25 @@ const LoginForm = () => {
                 alert("Your Account has been successfully logged in");
                 let userId = response.data.data.id;
                 let username = response.data.data.username;
-                alert(`user id:  '${userId}'  ||  username:  '${username}'`)
+
+                toast.success(`user id:  '${userId}'  ||  username:  '${username}'`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    // transition: Bounce,
+                });
+                // alert(`user id:  '${userId}'  ||  username:  '${username}'`)
                 console.log(response.data.data);
             })
             .catch(error => {
                 console.error('Error verifying OTP', error);
+                let message = error.response.data.data;
+                alert(`Error logging in: ${message}`);
             });
     };
 

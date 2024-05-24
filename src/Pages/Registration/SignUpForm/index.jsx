@@ -43,6 +43,8 @@ const SignUpForm = () => {
             }
         } catch (error) {
             console.error('Error:', error);
+            let message = error.response.data.data;
+            alert(`Error registering: ${message}`);
         }
     };
 

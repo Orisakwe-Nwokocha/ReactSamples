@@ -1,7 +1,6 @@
 import './App.css';
 import Hero from "./Pages/Home/Hero";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Register from "./Pages/Registration/register";
 import SignUpForm from "./Pages/Registration/SignUpForm";
 import LoginForm from "./Pages/LoginForm/login";
 import OtpForm from "./Pages/Registration/OtpForm";
@@ -9,7 +8,6 @@ import OtpForm from "./Pages/Registration/OtpForm";
 function App() {
   return (
       <>
-
           <section className="welcome-section" id="welcome-section">
               <div className="title">
                   <h1>Welcome to Alexandria Library!</h1>
@@ -25,7 +23,6 @@ function App() {
                       <Route element={<SignUpForm/>} path={"/signup"}/>
                       <Route element={<LoginForm/>} path={"/login"}/>
                       <Route element={<OtpForm/>} path={"/authenticate"}/>
-                      <Route element={<Register/>} path={"/register"}/>
                   </Route>
               </Routes>
           </BrowserRouter>

@@ -32,6 +32,8 @@ const OtpForm = () => {
             })
             .catch(error => {
                 console.error('Error verifying OTP', error);
+                let message = error.response.data.data;
+                alert(`Error verifying OTP: ${message}`);
             });
     };
 
