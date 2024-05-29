@@ -102,10 +102,10 @@ const LoginForm = () => {
                         </div>
                         <div className="form-footer1">
                             <div>
-                                <p style={{paddingRight: 60}}><input type="checkbox"/> Remember me </p>
+                                <p style={{paddingRight: 43}}><input type="checkbox"/> Remember me </p>
                             </div>
                             <div>
-                                <p style={{paddingLeft: 60}}>Forgot Password</p>
+                                <p style={{paddingLeft: 43}}>Forgot Password</p>
                             </div>
                         </div>
                         <button type="submit" className="signup-button">Login</button>

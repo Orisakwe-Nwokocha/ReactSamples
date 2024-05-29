@@ -5,9 +5,22 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {Field, Form, Formik} from "formik";
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
+// import * as Yup from 'yup';
+
 
 
 const SignUpForm = () => {
+    // const validationSchema = Yup.object().shape({
+    //     fullName: Yup.string()
+    //         .matches(/^[a-zA-Z\s]+$/, 'Name should only contain letters and spaces')
+    //         .required('Full Name is required'),
+    //     email: Yup.string()
+    //         .email('Invalid email address')
+    //         .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Must be a valid email Address')
+    //         .required('Email Address is required'),
+    // });
     const [formData, setFormData] = useState({
         username: "",
         password: "",
@@ -86,11 +99,12 @@ const SignUpForm = () => {
                 progress: undefined,
                 theme: "dark"
             });
-        }
+        } 
     };
 
     return (
         <div>
+            <Header/>
             <Formik
                 // initialValues={{fullName: '', email: ''}}
                 // validationSchema={validationSchema}
@@ -153,6 +167,7 @@ const SignUpForm = () => {
         </div>
             </Formik>
             <ToastContainer/>
+            <Footer/>
         </div>
     );
 };
