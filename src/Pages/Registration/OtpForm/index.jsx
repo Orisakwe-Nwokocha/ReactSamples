@@ -5,6 +5,8 @@ import {useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {Field, Form, Formik} from "formik";
 import {toast, ToastContainer} from "react-toastify";
+import OtpInput from 'react-otp-input';
+
 
 const OtpForm = () => {
     const [otp, setOtp] = useState('');
@@ -12,15 +14,18 @@ const OtpForm = () => {
     const { formData } = location.state || {};
     const navigate = useNavigate();
 
-    const handleChange = (e) => {
-        setOtp(e.target.value);
-    };
 
-    const handleSubmit = () => {
+    // const handleChange = (e) => {
+    //     setOtp(e.target.value);
+    // };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
         const finalData = {
             ...formData,
             otp,
         };
+
         axios.post("http://localhost:8080/user/register", finalData)
             .then(response => {
                 console.log('OTP Verified', response);
@@ -68,34 +73,68 @@ const OtpForm = () => {
 
     return (
         <div>
-            <Formik
-                // initialValues={{fullName: '', email: ''}}
-                // validationSchema={validationSchema}
-                onSubmit={handleSubmit}
-                initialValues={{otp: ""}}
-            >
-        <div className="otp-container">
-            <img src={signUpLogo} className="signup-image" alt="signUpLogo"/>
+        {/*    <Formik*/}
+        {/*        // initialValues={{fullName: '', email: ''}}*/}
+        {/*        // validationSchema={validationSchema}*/}
+        {/*        onSubmit={handleSubmit}*/}
+        {/*        initialValues={{otp: ""}}*/}
+        {/*    >*/}
+        {/*<div className="otp-container">*/}
+        {/*    <img src={signUpLogo} className="signup-image" alt="signUpLogo"/>*/}
 
-            <div className="signup-form">
-                <Form className="signup-form">
+        {/*    <div className="signup-form">*/}
+        {/*        <Form className="signup-form">*/}
+        {/*            <h2>Enter your otp number</h2>*/}
+        {/*            <div className="input-container">*/}
+        {/*                <Field*/}
+        {/*                    id="otp"*/}
+        {/*                    name="otp"*/}
+        {/*                    type="text"*/}
+        {/*                    placeholder="OTP"*/}
+        {/*                    value={otp}*/}
+        {/*                    onChange={handleChange}*/}
+        {/*                    required*/}
+        {/*                />*/}
+        {/*            </div>*/}
+        {/*            <button type="submit" className="signup-button">Verify OTP</button>*/}
+        {/*        </Form>*/}
+        {/*    </div>*/}
+        {/*</div>*/}
+        {/*    </Formik>*/}
+
+            <div className="otp-container" >
+                <img src={signUpLogo} className="signup-image" alt="signUpLogo"/>
+
+                <div className="signup-form">
                     <h2>Enter your otp number</h2>
-                    <div className="input-container">
-                        <Field
-                            id="otp"
-                            name="otp"
-                            type="text"
-                            placeholder="OTP"
+                    <form className="signup-form" onSubmit={handleSubmit}>
+
+                        <OtpInput
                             value={otp}
-                            onChange={handleChange}
-                            required
+                            onChange={setOtp}
+                            numInputs={4}
+                            renderSeparator={<span></span>}
+                            renderInput={(props) => <input {...props} />}
                         />
-                    </div>
-                    <button type="submit" className="signup-button">Verify OTP</button>
-                </Form>
+                        <button type="submit" className="signup-button">Verify OTP</button>
+
+
+                    </form>
+                    {/*<div className="input-container">*/}
+                    {/*    <Field*/}
+                        {/*        id="otp"*/}
+                        {/*        name="otp"*/}
+                        {/*        type="text"*/}
+                        {/*        placeholder="OTP"*/}
+                        {/*        value={otp}*/}
+                        {/*        onChange={handleChange}*/}
+                        {/*        required*/}
+                        {/*    />*/}
+                    {/*</div>*/}
+                </div>
             </div>
-        </div>
-            </Formik>
+
+
             <ToastContainer/>
         </div>
     );

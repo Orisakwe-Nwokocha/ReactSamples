@@ -11,6 +11,7 @@ footer {
     color: #c7c7c7;
     justify-items: right;
     /*position: fixed;*/
+    box-sizing: border-box;
 }
 
 footer > p {
