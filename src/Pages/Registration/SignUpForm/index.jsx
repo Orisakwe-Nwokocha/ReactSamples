@@ -25,6 +25,7 @@ const SignUpForm = () => {
         username: "",
         password: "",
         role: "",
+        email: "",
     });
 
     const navigate = useNavigate();
@@ -135,6 +136,17 @@ const SignUpForm = () => {
                             type="password"
                             placeholder="Password"
                             value={formData.password}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="input-container">
+                        <Field
+                            id="email"
+                            name="email"
+                            type="text"
+                            placeholder="email"
+                            value={formData.email}
                             onChange={handleChange}
                             required
                         />

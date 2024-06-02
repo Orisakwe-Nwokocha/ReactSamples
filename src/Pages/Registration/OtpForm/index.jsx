@@ -5,7 +5,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {Field, Form, Formik} from "formik";
 import {toast, ToastContainer} from "react-toastify";
-import OtpInput from 'react-otp-input';
+// import OtpInput from 'react-otp-input';
 
 
 const OtpForm = () => {
@@ -15,12 +15,12 @@ const OtpForm = () => {
     const navigate = useNavigate();
 
 
-    // const handleChange = (e) => {
-    //     setOtp(e.target.value);
-    // };
+    const handleChange = (e) => {
+        setOtp(e.target.value);
+    };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = () => {
+        // e.preventDefault();
         const finalData = {
             ...formData,
             otp,
@@ -73,67 +73,55 @@ const OtpForm = () => {
 
     return (
         <div>
-        {/*    <Formik*/}
-        {/*        // initialValues={{fullName: '', email: ''}}*/}
-        {/*        // validationSchema={validationSchema}*/}
-        {/*        onSubmit={handleSubmit}*/}
-        {/*        initialValues={{otp: ""}}*/}
-        {/*    >*/}
-        {/*<div className="otp-container">*/}
-        {/*    <img src={signUpLogo} className="signup-image" alt="signUpLogo"/>*/}
+            <Formik
+                // initialValues={{fullName: '', email: ''}}
+                // validationSchema={validationSchema}
+                onSubmit={handleSubmit}
+                initialValues={{otp: ""}}
+            >
+        <div className="otp-container">
+            <img src={signUpLogo} className="signup-image" alt="signUpLogo"/>
 
-        {/*    <div className="signup-form">*/}
-        {/*        <Form className="signup-form">*/}
-        {/*            <h2>Enter your otp number</h2>*/}
-        {/*            <div className="input-container">*/}
-        {/*                <Field*/}
-        {/*                    id="otp"*/}
-        {/*                    name="otp"*/}
-        {/*                    type="text"*/}
-        {/*                    placeholder="OTP"*/}
-        {/*                    value={otp}*/}
-        {/*                    onChange={handleChange}*/}
-        {/*                    required*/}
-        {/*                />*/}
-        {/*            </div>*/}
-        {/*            <button type="submit" className="signup-button">Verify OTP</button>*/}
-        {/*        </Form>*/}
-        {/*    </div>*/}
-        {/*</div>*/}
-        {/*    </Formik>*/}
-
-            <div className="otp-container" >
-                <img src={signUpLogo} className="signup-image" alt="signUpLogo"/>
-
-                <div className="signup-form">
+            <div className="signup-form">
+                <Form className="signup-form">
                     <h2>Enter your otp number</h2>
-                    <form className="signup-form" onSubmit={handleSubmit}>
-
-                        <OtpInput
+                    <div className="input-container">
+                        <Field
+                            id="otp"
+                            name="otp"
+                            type="text"
+                            placeholder="OTP"
                             value={otp}
-                            onChange={setOtp}
-                            numInputs={4}
-                            renderSeparator={<span></span>}
-                            renderInput={(props) => <input {...props} />}
+                            onChange={handleChange}
+                            required
                         />
-                        <button type="submit" className="signup-button">Verify OTP</button>
-
-
-                    </form>
-                    {/*<div className="input-container">*/}
-                    {/*    <Field*/}
-                        {/*        id="otp"*/}
-                        {/*        name="otp"*/}
-                        {/*        type="text"*/}
-                        {/*        placeholder="OTP"*/}
-                        {/*        value={otp}*/}
-                        {/*        onChange={handleChange}*/}
-                        {/*        required*/}
-                        {/*    />*/}
-                    {/*</div>*/}
-                </div>
+                    </div>
+                    <button type="submit" className="signup-button">Verify OTP</button>
+                </Form>
             </div>
+        </div>
+            </Formik>
 
+            {/*<div className="otp-container" >*/}
+            {/*    <img src={signUpLogo} className="signup-image" alt="signUpLogo"/>*/}
+
+            {/*    <div className="signup-form">*/}
+            {/*        <h2>Enter your otp number</h2>*/}
+            {/*        <form className="signup-form" onSubmit={handleSubmit}>*/}
+
+            {/*            <OtpInput*/}
+            {/*                value={otp}*/}
+            {/*                onChange={setOtp}*/}
+            {/*                numInputs={4}*/}
+            {/*                renderSeparator={<span></span>}*/}
+            {/*                renderInput={(props) => <input {...props} />}*/}
+            {/*            />*/}
+            {/*            <button type="submit" className="signup-button">Verify OTP</button>*/}
+
+
+            {/*        </form>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
             <ToastContainer/>
         </div>
